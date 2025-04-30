@@ -197,7 +197,7 @@ int main()
             sprintf(fnameB, "B_t%05d.csv", step);
             writeCSV(A, fnameA);
             //writeCSV(B, fnameB);
-            //std::cout << "Output step " << step << std::endl;
+            std::cout << "Output step " << step << std::endl;
         }
         double A_min=1e300, A_max=-1e300;
         for(double v: A){ A_min = std::min(A_min,v); A_max = std::max(A_max,v); }
