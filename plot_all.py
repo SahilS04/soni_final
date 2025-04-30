@@ -10,7 +10,7 @@ from scipy.stats import binned_statistic
 # USER SETTINGS
 # --------------------
 NBINS   = 60
-PRED_K  = 0   # <-- hardcode your predicted k here
+PRED_K  = 4.41   # <-- hardcode your predicted k here
 DX      = 1.0   # grid spacing in simulation units
 OUTPUT_VIDEO = 'cross1_a0.05_b1.50_diff0.01.mp4'
 
