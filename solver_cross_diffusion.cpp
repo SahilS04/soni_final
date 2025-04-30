@@ -26,12 +26,12 @@ static const int NX = 512;
 static const int NY = 512;
 
 // Reaction-Diffusion parameters (example)
-static const double DA = 1.0;   // Diffusion of A
-static const double DB = 100.0;  // Diffusion of B
+static const double DA = 0.01;   // Diffusion of A
+static const double DB = 1.0;  // Diffusion of B
 static const double alpha = 0.05; // feed rate of activator
-static const double beta  = 0.25; // feed rate of inhibitor
+static const double beta  = 1.0; // feed rate of inhibitor
 static const double chi_a = 1.0;
-static const double chi_b = 10.0;
+static const double chi_b = 1.0;
 
 // Time stepping
 static const double dt = 0.004;   // time step

@@ -12,7 +12,7 @@ from scipy.stats import binned_statistic
 NBINS   = 60
 PRED_K  = 0   # <-- hardcode your predicted k here
 DX      = 1.0   # grid spacing in simulation units
-OUTPUT_VIDEO = 'cross0.1_a0.05_b0.25_diff0.01.mp4'
+OUTPUT_VIDEO = 'cross0.1_a0.05_b1.50_diff0.01.00.mp4'
 
 # --------------------
 # FFT + Radial Functions
