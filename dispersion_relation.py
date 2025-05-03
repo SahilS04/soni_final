@@ -1,10 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-alpha = 0.15
-beta = 0.30
-Da = 1.0
-Db = 60.0
+alpha = 0.025
+beta = 0.5
+Da = .05
+Db = 1.0
 
 def homogeneous_solution(alpha, beta):
     A0 = alpha + beta
@@ -94,52 +94,5 @@ param_texts = [
 ]
 
 fig.text(0.87, 0.5, '\n'.join(param_texts), fontsize='medium', ha='left', va='center')
-plt.savefig(f'a{alpha:.2f}_b{beta:.2f}_diff{(Da/Db):.2f}.png', dpi=300)
+plt.savefig(f'a{alpha:.3f}_b{beta:.3f}_diff{(Da/Db):.2f}.png', dpi=300)
 plt.show()
-
-
-# ----------------------------------------------------------------------
-# public helpers expected by other scripts
-# ----------------------------------------------------------------------
-
-def omega(alpha, beta, DA, DB, k_complex, chi_a=0.0, chi_b=0.0):
-    """
-    Return the eigenvalue ω(k) with the maximum real part.
-    For χ_a = χ_b = 0 this reduces to the classic Schnakenberg result.
-    """
-    # pick the correct dispersion relation depending on χ
-    if abs(chi_a) < 1e-12 and abs(chi_b) < 1e-12:
-        # no cross-diffusion: use the existing pos/neg functions
-        w_plus  = dispersion_relation_pos(k, alpha, beta, DA, DB)
-        w_minus = dispersion_relation_neg(k, alpha, beta, DA, DB)
-    else:
-        # include χ-terms explicitly (single quadratic; same algebra)
-        A, B = homogeneous_solution(alpha, beta)
-        fa, fb =  2*A*B - 1,  A**2
-        ga, gb = -2*A*B,      -A**2
-        k2     = k*k
-        b  = k2*(DA+DB) - (fa+gb)
-        c  = (fa*gb - fb*ga) \
-           + k2*(k2*DA*DB - gb*DA - fa*DB) \
-           - fb*chi_b - ga*chi_a + chi_a*chi_b
-        disc = b*b - 4.0*c
-        # numerical noise can push disc slightly < 0
-        disc = disc if disc > 0 else 0.0
-        w_plus  = (-b + np.sqrt(disc)) / 2.0
-        w_minus = (-b - np.sqrt(disc)) / 2.0
-
-    # return the one with the larger real part
-    return w_plus if w_plus.real >= w_minus.real else w_minus
-
-
-def k_max(alpha, beta, DA, DB, chi_a=0.0, chi_b=0.0,
-          k_max=3.0, nk=600):
-    """
-    Brute-force search for the wavenumber with maximum Re ω.
-    """
-    k_grid = np.linspace(0.0, k_max, nk)
-    growth = [omega(alpha, beta, DA, DB, k,
-                    chi_a=chi_a, chi_b=chi_b).real
-              for k in k_grid]
-    idx = int(np.argmax(growth))
-    return k_grid[idx]

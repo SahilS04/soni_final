@@ -10,9 +10,9 @@ from scipy.stats import binned_statistic
 # USER SETTINGS
 # --------------------
 NBINS   = 60
-PRED_K  = 4.41   # <-- hardcode your predicted k here
+PRED_K  = 0.98   # <-- hardcode your predicted k here
 DX      = 1.0   # grid spacing in simulation units
-OUTPUT_VIDEO = 'cross1_a0.05_b1.50_diff0.01.mp4'
+OUTPUT_VIDEO = 'a0.025_b0.500_diff0.2.mp4'
 
 # --------------------
 # FFT + Radial Functions
@@ -177,5 +177,5 @@ ani = animation.FuncAnimation(
     fig, update, init_func=init,
     frames=total_frames, interval=100, blit=False
 )
-ani.save(OUTPUT_VIDEO, writer='ffmpeg', fps=60)
+ani.save(OUTPUT_VIDEO, writer='ffmpeg', fps=90)
 plt.show()
