@@ -30,8 +30,8 @@
 #include <omp.h>
 
 // Grid size
-static const int NX = 256;
-static const int NY = 256;
+static const int NX = 128;
+static const int NY = 128;
 
 // Reaction-Diffusion parameters (Schnakenberg model)
 static const double DA = 0.01;   // Diffusion coefficient for A
@@ -40,8 +40,8 @@ static const double DB = 1.0;  // Diffusion coefficient for B
 //static const double alpha = 0.02; // Default alpha value
 
 // Time stepping settings
-static const double dt = 0.005;   // time step size
-static const int MAX_STEPS = 15000;  // maximum number of steps
+static const double dt = 0.01;   // time step size
+static const int MAX_STEPS = 10000;  // maximum number of steps
 
 // Gauss-Seidel iteration settings
 static const int GS_ITER = 20;   // Number of Gauss-Seidel sweeps per time step
