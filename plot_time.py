@@ -46,7 +46,7 @@ cbar.set_label('Time to Pattern Formation (s)')
 
 # Position the legend and note outside the main axes.
 plt.legend(bbox_to_anchor=(1.2, 1), loc='upper left', borderaxespad=0)
-note = r"Note: ${\frac{D_A}{D_B}} = 0.01$"
+note = r"${\frac{D_A}{D_B}} = 0.01$"
 plt.text(
     1.21, 0.85, note,
     fontsize=10,
