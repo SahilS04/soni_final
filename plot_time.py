@@ -8,8 +8,8 @@ import numpy as np
 df = pd.read_csv("pattern_formation_times.csv")
 
 # Separate points where a pattern was detected (t_pattern != 10) and not detected.
-df_pattern = df[df.t_pattern != 100]
-df_no_pattern = df[df.t_pattern == 100]
+df_pattern = df[df.t_pattern != 50]
+df_no_pattern = df[df.t_pattern == 50]
 
 plt.figure(figsize=(12,7))
 
@@ -23,7 +23,7 @@ sc = plt.scatter(
     edgecolor='k',
     vmin=0,          # Minimum of color scale
     vmax=4,        # Maximum of color scale
-    label='Pattern formed (t < 100)'
+    label='Pattern formed (t < 50)'
 )
 
 # Plot runs with no pattern formation in a distinct color and marker.

@@ -41,7 +41,7 @@ static const double DB = 1.0;  // Diffusion coefficient for B
 
 // Time stepping settings
 static const double dt = 0.01;   // time step size
-static const int MAX_STEPS = 10000;  // maximum number of steps
+static const int MAX_STEPS = 5000;  // maximum number of steps
 
 // Gauss-Seidel iteration settings
 static const int GS_ITER = 20;   // Number of Gauss-Seidel sweeps per time step
@@ -174,7 +174,7 @@ int main() {
             // Variable to record time to pattern formation.
             // t_pattern will be the simulation time (step*dt) when sigma_A first exceeds THRESHOLD.
             // If no spike occurs, we record t_pattern = dt*max_steps.
-            double t_pattern = 100; // default flag for "no pattern"
+            double t_pattern = 50; // default flag for "no pattern"
             bool pattern_found = false;
             
             // Time-stepping loop
