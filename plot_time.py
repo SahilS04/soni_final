@@ -57,5 +57,5 @@ plt.text(
 
 
 plt.tight_layout()
-plt.savefig("pattern_formation_heatmap_beta_diffusion.png", dpi=400, bbox_inches='tight')
+plt.savefig("pattern_formation_heatmap.png", dpi=400, bbox_inches='tight')
 plt.show()
