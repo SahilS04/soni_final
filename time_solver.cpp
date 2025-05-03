@@ -131,6 +131,8 @@ int main() {
     openCSV(fout, "pattern_formation_times.csv");
 
     // Parameter ranges:
+    double beta;
+    double alpha;
     #pragma omp parallel for collapse(2) schedule(dynamic)
     for (int N_BETA = 1; N_BETA < 21; N_BETA += 1) {
         for (int N_ALPHA = 1; N_ALPHA < 21; N_ALPHA += 1) {
