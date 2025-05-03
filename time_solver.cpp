@@ -132,8 +132,10 @@ int main() {
 
     // Parameter ranges:
     #pragma omp parallel for collapse(2) schedule(dynamic)
-    for (double beta = 0.1; beta < 2.1; beta += 0.1) {
-        for (double alpha = 0.01; alpha < 0.21; alpha += 0.01) {
+    for (int N_BETA = 1; N_BETA < 21; N_BETA += 1) {
+        for (int N_ALPHA = 1; N_ALPHA < 21; N_ALPHA += 1) {
+            beta = 0.1 * N_BETA; // beta from 0.1 to 2.0
+            alpha = 0.01 * N_ALPHA; // alpha from 0.01 to 0.2
             std::cout << "Running simulation for alpha = " << alpha << ", beta = " << beta << std::endl;
             
             // Allocate fields for A and B
