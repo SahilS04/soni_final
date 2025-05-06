@@ -22,18 +22,18 @@ static const int NX = 512;
 static const int NY = 512;
 
 // Reaction-Diffusion parameters (example)
-static const double DA = 0.2;   // Diffusion of A
+static const double DA = 0.01;   // Diffusion of A
 static const double DB = 1.0;  // Diffusion of B
-static const double alpha = 0.025; // feed rate of activator
-static const double beta  = 0.5; // feed rate of inhibitor
+static const double alpha = 0.2; // feed rate of activator
+static const double beta  = 2.0; // feed rate of inhibitor
 
 // Time stepping
-static const double dt = 0.005;   // time step
+static const double dt = 0.001;   // time step
 static const int STEPS = 40000;   // total number of steps
 static const int OUTPUT_INTERVAL = 50; //
 
 // Gauss-Seidel iteration settings
-static const int GS_ITER = 30;   // Gauss-Seidel sweeps per time step
+static const int GS_ITER = 40;   // Gauss-Seidel sweeps per time step
 
 // Convert (i,j) to 1D index
 inline int idx(int i, int j) {
@@ -127,7 +127,6 @@ int main()
         for(int i=0; i<NX; i++){
             double noiseA = (((double)rand()/RAND_MAX) - 0.5);
             double noiseB = (((double)rand()/RAND_MAX) - 0.5);
-            double perturb = sin(4.0 * M_PI * i / NX);
             A[idx(i,j)] = A0 + noiseA;
             B[idx(i,j)] = B0 + noiseB;
         }

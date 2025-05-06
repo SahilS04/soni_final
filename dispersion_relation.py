@@ -1,10 +1,10 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-alpha = 0.025
-beta = 0.5
-Da = .05
-Db = 1.0
+alpha = 0.05
+beta = 0.8
+Da = 1.0
+Db = 80.0
 
 def homogeneous_solution(alpha, beta):
     A0 = alpha + beta
@@ -39,7 +39,7 @@ def dispersion_relation_neg(k, alpha, beta, Da, Db):
     return (-b - np.sqrt(b*b - 4*c))/2
 
 # Set the domain
-k = np.linspace(0, 3, 750)
+k = np.linspace(0, 1, 750)
 k_complex = k.astype(np.complex128)
 
 # Evaluate the function

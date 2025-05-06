@@ -10,9 +10,9 @@ from scipy.stats import binned_statistic
 # USER SETTINGS
 # --------------------
 NBINS   = 60
-PRED_K  = 0.98   # <-- hardcode your predicted k here
+PRED_K  = 4.953   # <-- hardcode your predicted k here
 DX      = 1.0   # grid spacing in simulation units
-OUTPUT_VIDEO = 'a0.025_b0.500_diff0.2.mp4'
+OUTPUT_VIDEO = 'a0.200_b2.000_diff0.01.mp4'
 
 # --------------------
 # FFT + Radial Functions
@@ -26,14 +26,14 @@ def compute_fft(field, dx=DX):
     """
     N, M = field.shape
     # center the FFT
-    F     = np.fft.fftshift(np.fft.fft2(field))
+    F = np.fft.fftshift(np.fft.fft2(field))
     power = np.abs(F)**2
 
     # frequencies in cycles/unit, then convert to radians/unit
     fx = np.fft.fftfreq(M, d=dx)
     fy = np.fft.fftfreq(N, d=dx)
-    kx = 2*np.pi * np.fft.fftshift(fx)  # spans [-pi, pi]
-    ky = 2*np.pi * np.fft.fftshift(fy)
+    kx = 4*np.pi * np.fft.fftshift(fx)  # spans [-2pi, 2pi]
+    ky = 4*np.pi * np.fft.fftshift(fy)
     KX, KY = np.meshgrid(kx, ky)
     kgrid  = np.sqrt(KX**2 + KY**2)
     return power, kgrid, kx, ky

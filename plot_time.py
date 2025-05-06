@@ -36,7 +36,7 @@ plt.scatter(
     label='No pattern formed'
 )
 
-plt.xlabel(r'$\alpha')
+plt.xlabel(r'$\alpha$')
 plt.ylabel(r'$\beta$')
 plt.title('Time to Pattern Formation in the Reaction-Diffusion System')
 
@@ -57,5 +57,5 @@ plt.text(
 
 
 plt.tight_layout()
-plt.savefig("pattern_formation_heatmap.png", dpi=400, bbox_inches='tight')
+plt.savefig("pattern_formation_heatmap_check.png", dpi=400, bbox_inches='tight')
 plt.show()

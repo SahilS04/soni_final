@@ -34,7 +34,7 @@ static const int NX = 128;
 static const int NY = 128;
 
 // Reaction-Diffusion parameters (Schnakenberg model)
-static const double DA = 0.01;   // Diffusion coefficient for A
+static const double DA = 1.0;   // Diffusion coefficient for A
 static const double DB = 1.0;  // Diffusion coefficient for B
 //static const double beta = 0.2;  // Default beta value
 //static const double alpha = 0.02; // Default alpha value
@@ -47,7 +47,7 @@ static const int MAX_STEPS = 5000;  // maximum number of steps
 static const int GS_ITER = 20;   // Number of Gauss-Seidel sweeps per time step
 
 // Threshold for pattern formation (activator standard deviation)
-static const double THRESHOLD = 0.4; // threshold for pattern formation
+static const double THRESHOLD = 0.3; // threshold for pattern formation
 
 // Convert (i,j) to 1D index
 inline int idx(int i, int j) {
@@ -134,8 +134,8 @@ int main() {
     double beta;
     double alpha;
     #pragma omp parallel for collapse(2) schedule(dynamic)
-    for (int N_BETA = 1; N_BETA < 21; N_BETA += 1) {
-        for (int N_ALPHA = 1; N_ALPHA < 21; N_ALPHA += 1) {
+    for (int N_BETA = -25; N_BETA < 26; N_BETA += 1) {
+        for (int N_ALPHA = -25; N_ALPHA < 26; N_ALPHA += 1) {
             beta = 0.1 * N_BETA; // beta from 0.1 to 2.0
             alpha = 0.01 * N_ALPHA; // alpha from 0.01 to 0.2
             std::cout << "Running simulation for alpha = " << alpha << ", beta = " << beta << std::endl;
